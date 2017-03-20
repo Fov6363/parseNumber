@@ -1,0 +1,25 @@
+{
+  "name": "parsenumber",
+  "version": "1.0.0",
+  "description": "for parse number",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Fov6363/parseNumber.git"
+  },
+  "keywords": [
+    "parse",
+    "number",
+    "int",
+    "float"
+  ],
+  "author": "yuanyuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fov6363/parseNumber/issues"
+  },
+  "homepage": "https://github.com/Fov6363/parseNumber#readme"
+}

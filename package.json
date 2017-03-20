@@ -1,7 +1,7 @@
 {
-  "name": "normalUtil",
+  "name": "normalutil",
   "version": "1.0.0",
-  "description": "for parse number",
+  "description": "normal util need",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/test_parseNumber.js"

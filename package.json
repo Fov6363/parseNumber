@@ -1,5 +1,5 @@
 {
-  "name": "parsenumber",
+  "name": "normalUtil",
   "version": "1.0.0",
   "description": "for parse number",
   "main": "index.js",
@@ -12,9 +12,7 @@
   },
   "keywords": [
     "parse",
-    "number",
-    "int",
-    "float"
+    "util"
   ],
   "author": "yuanyuan",
   "license": "ISC",

@@ -1,10 +1,10 @@
 {
   "name": "normalutil",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "normal util need",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/test_parseNumber.js"
+    "test": "mocha test/*"
   },
   "repository": {
     "type": "git",

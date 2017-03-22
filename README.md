@@ -1,4 +1,4 @@
-#for parse Number
+#normal Util
 
 
 #demo
@@ -11,8 +11,24 @@ parseIntDefault([],0) => 0
 ```
 
 ```
-parseIntForce(1); ==> 1
-parseIntForce('1'); ==> 1
-parseIntForce('abc'); ==> throw new Error()
+parseIntForce(1) ==> 1
+parseIntForce('1') ==> 1
+parseIntForce('abc') ==> throw new Error()
 
+```
+
+```
+isJson({"a":1}) ==> true
+isJson("{'aa':112}") ==> true
+isJson(11) ==> false
+isJson([]) ==> false
+isJson("12") ==> false
+```
+
+```
+isNumber("12") ==> true
+isNumber(11) ==> true
+isNumber("abc") ==> false
+isNumber([]) ==> false
+isNumber("") ==> false
 ```

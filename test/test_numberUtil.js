@@ -3,7 +3,7 @@
  */
 const mocha       = require('mocha');
 const assert      = require('assert');
-const parseNumber = require('../index');
+const numberUtil = require('../index');
 
 describe('parseIntDefault',function () {
     it('should get right number',function (done) {
@@ -16,12 +16,12 @@ describe('parseIntDefault',function () {
         let default_value_1 = 10;
         let default_value_2 = null;
 
-        assert.equal(parseNumber.parseIntDefault(num1,default_value_1),50);
-        assert.equal(parseNumber.parseIntDefault(num2,default_value_1),50);
-        assert.equal(parseNumber.parseIntDefault(num3,default_value_1),default_value_1);
-        assert.equal(parseNumber.parseIntDefault(num4,default_value_1),default_value_1);
-        assert.equal(parseNumber.parseIntDefault(num5,default_value_1),default_value_1);
-        assert.equal(parseNumber.parseIntDefault(num3,default_value_2),0);
+        assert.equal(numberUtil.parseIntDefault(num1,default_value_1),50);
+        assert.equal(numberUtil.parseIntDefault(num2,default_value_1),50);
+        assert.equal(numberUtil.parseIntDefault(num3,default_value_1),default_value_1);
+        assert.equal(numberUtil.parseIntDefault(num4,default_value_1),default_value_1);
+        assert.equal(numberUtil.parseIntDefault(num5,default_value_1),default_value_1);
+        assert.equal(numberUtil.parseIntDefault(num3,default_value_2),0);
         done();
     });
 });
@@ -38,13 +38,13 @@ describe('parseFloatDefault',function () {
         let default_value_1 = 10.1;
         let default_value_2 = null;
 
-        assert.equal(parseNumber.parseFloatDefault(num1,default_value_1),50.87);
-        assert.equal(parseNumber.parseFloatDefault(num2,default_value_1),50.87);
-        assert.equal(parseNumber.parseFloatDefault(num3,default_value_1),default_value_1);
-        assert.equal(parseNumber.parseFloatDefault(num4,default_value_1),default_value_1);
-        assert.equal(parseNumber.parseFloatDefault(num5,default_value_1),86);
-        assert.equal(parseNumber.parseFloatDefault(num6,default_value_2),0);
-        assert.equal(parseNumber.parseFloatDefault(num3,default_value_2),0);
+        assert.equal(numberUtil.parseFloatDefault(num1,default_value_1),50.87);
+        assert.equal(numberUtil.parseFloatDefault(num2,default_value_1),50.87);
+        assert.equal(numberUtil.parseFloatDefault(num3,default_value_1),default_value_1);
+        assert.equal(numberUtil.parseFloatDefault(num4,default_value_1),default_value_1);
+        assert.equal(numberUtil.parseFloatDefault(num5,default_value_1),86);
+        assert.equal(numberUtil.parseFloatDefault(num6,default_value_2),0);
+        assert.equal(numberUtil.parseFloatDefault(num3,default_value_2),0);
         done();
     });
 });
@@ -57,10 +57,10 @@ describe('parseIntForce',function () {
         let num4 = {"id":123};
         let num5 = null;
 
-        assert.equal(parseNumber.parseIntForce(num1),50);
-        assert.equal(parseNumber.parseIntForce(num2),50);
+        assert.equal(numberUtil.parseIntForce(num1),50);
+        assert.equal(numberUtil.parseIntForce(num2),50);
         assert.throws(function () {
-            parseNumber.parseIntForce(num3)
+            numberUtil.parseIntForce(num3)
         },function (err) {
             if(err instanceof Error && /parseIntForce/.test(err.message)){
                 return true;
@@ -70,7 +70,7 @@ describe('parseIntForce',function () {
         });
 
         assert.throws(function () {
-            parseNumber.parseIntForce(num4)
+            numberUtil.parseIntForce(num4)
         },function (err) {
             if(err instanceof Error && /parseIntForce/.test(err.message)){
                 return true;
@@ -79,7 +79,7 @@ describe('parseIntForce',function () {
             return false;
         });
         assert.throws(function () {
-            parseNumber.parseIntForce(num5)
+            numberUtil.parseIntForce(num5)
         },function (err) {
             if(err instanceof Error && /parseIntForce/.test(err.message)){
                 return true;
@@ -101,12 +101,12 @@ describe('parseFloatForce',function () {
         let num5 = null;
         let num6 = '87.00';
 
-        assert.equal(parseNumber.parseFloatForce(num1),50.12);
-        assert.equal(parseNumber.parseFloatForce(num2),50.12);
-        assert.equal(parseNumber.parseFloatForce(num6),87);
+        assert.equal(numberUtil.parseFloatForce(num1),50.12);
+        assert.equal(numberUtil.parseFloatForce(num2),50.12);
+        assert.equal(numberUtil.parseFloatForce(num6),87);
 
         assert.throws(function () {
-            parseNumber.parseFloatForce(num3)
+            numberUtil.parseFloatForce(num3)
         },function (err) {
             if(err instanceof Error && /parseFloatForce/.test(err.message)){
                 return true;
@@ -116,7 +116,7 @@ describe('parseFloatForce',function () {
         });
 
         assert.throws(function () {
-            parseNumber.parseFloatForce(num4)
+            numberUtil.parseFloatForce(num4)
         },function (err) {
             if(err instanceof Error && /parseFloatForce/.test(err.message)){
                 return true;
@@ -125,7 +125,7 @@ describe('parseFloatForce',function () {
             return false;
         });
         assert.throws(function () {
-            parseNumber.parseFloatForce(num5)
+            numberUtil.parseFloatForce(num5)
         },function (err) {
             if(err instanceof Error && /parseFloatForce/.test(err.message)){
                 return true;
@@ -133,6 +133,32 @@ describe('parseFloatForce',function () {
 
             return false;
         });
+
+        done();
+    });
+});
+
+describe('isNumber',function () {
+    it('should judeg is number',function (done) {
+        let num1 = 50.12;
+        let num2 = '50.12';
+        let num3 = 'ab';
+        let num4 = {"id":123};
+        let num5 = null;
+        let num6 = '87.00';
+        let num7 = "";
+        let num8 = undefined;
+        let num9 = NaN;
+
+        assert.equal(numberUtil.isNumber(num1),true);
+        assert.equal(numberUtil.isNumber(num2),true);
+        assert.equal(numberUtil.isNumber(num6),true);
+        assert.equal(numberUtil.isNumber(num3),false);
+        assert.equal(numberUtil.isNumber(num4),false);
+        assert.equal(numberUtil.isNumber(num5),false);
+        assert.equal(numberUtil.isNumber(num7),false);
+        assert.equal(numberUtil.isNumber(num8),false);
+        assert.equal(numberUtil.isNumber(num9),false);
 
         done();
     });

@@ -149,6 +149,7 @@ describe('isNumber',function () {
         let num7 = "";
         let num8 = undefined;
         let num9 = NaN;
+        let num10 = [1];
 
         assert.equal(numberUtil.isNumber(num1),true);
         assert.equal(numberUtil.isNumber(num2),true);
@@ -159,6 +160,7 @@ describe('isNumber',function () {
         assert.equal(numberUtil.isNumber(num7),false);
         assert.equal(numberUtil.isNumber(num8),false);
         assert.equal(numberUtil.isNumber(num9),false);
+        assert.equal(numberUtil.isNumber(num10),false);
 
         done();
     });

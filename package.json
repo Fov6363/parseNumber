@@ -1,6 +1,6 @@
 {
   "name": "normalutil",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "normal util need",
   "main": "index.js",
   "scripts": {

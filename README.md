@@ -13,8 +13,8 @@ parseIntDefault([],0) => 0
 ```
 parseIntForce(1) ==> 1
 parseIntForce('1') ==> 1
-parseIntForce('abc') ==> throw new Error()
-
+parseIntForce('abc') ==> throw new Error(`parseIntForce num fail,num = ${num}`)
+parseIntForce('abc','param error') ===> throw new Error('param error');
 ```
 
 ```

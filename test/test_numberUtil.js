@@ -88,6 +88,16 @@ describe('parseIntForce',function () {
             return false;
         });
 
+        assert.throws(function () {
+            numberUtil.parseIntForce(num5,'error_1')
+        },function (err) {
+            if(err instanceof Error && 'error_1' === err.message){
+                return true;
+            }
+
+            return false;
+        });
+
         done();
     });
 });
